@@ -6,6 +6,11 @@ import java.awt.event.ActionListener;
 import java.util.GregorianCalendar;
 import java.util.Calendar;
 
+/**
+ * Main Class for run the clock
+ *
+ * @author Sylwester
+ */
 public class App {
     private JButton button_msg;
     private JPanel panelMain;
@@ -30,6 +35,9 @@ public class App {
 
     }
 
+    /**
+     * Method to generate time - uses new thread
+     */
     public void clock() {
         Thread th = new Thread() {
             public void run() {
