@@ -3,7 +3,6 @@ package com.sp9gi;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.time.Clock;
 import java.util.GregorianCalendar;
 import java.util.Calendar;
 
@@ -13,18 +12,32 @@ import java.util.Calendar;
  * @author Sylwester
  */
 public class App {
-    private JButton button_msg;
+    String alarmHour = "0"; // set those variables to 0 because of problem with parsing - to RESOLVE!
+    String alarmMin= "0";   // because now teh alarm will be always set to 00:00
+    private JButton alarmSetButton;
     private JPanel panelMain;
     public JLabel clock;
     private JLabel date;
+    private JTextField minField;
+    private JTextField hourField;
+    private JLabel setLabel;
+    private JLabel labAlarm;
 
+    /**
+     * Method to operate App.form
+     */
     public App() {
-        button_msg.addActionListener(new ActionListener() {
+
+        alarmSetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(null, "Hello World");
+
+                alarmMin = minField.getText();
+                alarmHour = hourField.getText();
+                labAlarm.setText(alarmHour + " : " + alarmMin);
             }
         });
+
         clock();
 
     }
@@ -53,10 +66,15 @@ public class App {
                         date.setText(day + "/" + month + "/" + year);
                         sleep(1000);
 
-                        if (hour == 19 && second == 0) {  //Alarm set to...
+
+                        int alarmHourInt = Integer.valueOf(alarmHour); //Taking the time from form
+                        int alarmMinInt = Integer.valueOf(alarmMin);
+
+                        if (hour == alarmHourInt && min == alarmMinInt && second == 0) {  //Alarm set to...
+//                        if (hour == 19 && second == 0) {  //Alarm set to...
 
                             try {
-                                diode.blink();
+                                diode.buzzer();
 
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
@@ -82,7 +100,7 @@ public class App {
 
 //        Alarm diode = new Alarm();
 //        try {
-//            diode.blink();
+//            diode.buzzerOn();
 //
 //        } catch (InterruptedException e) {
 //            e.printStackTrace();
