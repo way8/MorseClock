@@ -1,5 +1,7 @@
 package com.sp9gi;
 
+import com.pi4j.io.gpio.Pin;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -71,7 +73,6 @@ public class App {
                         int alarmMinInt = Integer.valueOf(alarmMin);
 
                         if (hour == alarmHourInt && min == alarmMinInt && second == 0) {  //Alarm set to...
-//                        if (hour == 19 && second == 0) {  //Alarm set to...
 
                             try {
                                 diode.buzzer();
@@ -97,6 +98,15 @@ public class App {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
+
+        Pwm pwm = new Pwm();
+        try {
+            pwm.buzz();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
 
 //        Alarm diode = new Alarm();
 //        try {
