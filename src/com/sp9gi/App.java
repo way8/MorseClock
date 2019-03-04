@@ -24,23 +24,41 @@ public class App {
     private JTextField hourField;
     private JLabel setLabel;
     private JLabel labAlarm;
+    private JTextField codeField;
+    private JLabel codeLabel;
+    private JButton codeSetButton;
 
     /**
      * Method to operate App.form
      */
     public App() {
-
+        MorseCode signal = new MorseCode();
         alarmSetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 alarmMin = minField.getText();
                 alarmHour = hourField.getText();
                 labAlarm.setText(alarmHour + " : " + alarmMin);
             }
         });
 
+        codeSetButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                signal.input = codeField.getText();
+                Pwm pwm = new Pwm();
+                try {
+                    pwm.buzz();
+                } catch (InterruptedException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+
+
         clock();
+
 
     }
 
@@ -99,12 +117,7 @@ public class App {
         frame.pack();
         frame.setVisible(true);
 
-        Pwm pwm = new Pwm();
-        try {
-            pwm.buzz();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+
 
 
 

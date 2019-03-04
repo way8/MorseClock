@@ -19,7 +19,9 @@ public class Pwm {
 //                Total = 50 elements
 //                () = intercharacter
 //                [] = interword
-
+//
+//        T = 1200 / W
+//Where: T is the unit time, or dot duration in milliseconds, and W is the speed in wpm.
 
         MorseCode signal = new MorseCode();
 
@@ -43,14 +45,21 @@ public class Pwm {
 
 
         for (int j = 0; j < 10; j++) {
-            for (int i = 0; i < signal.c_arr.length; i++) {
-                if (signal.c_arr[i] == '.') {
+            for (int i = 0; i < signal.co_arr.length; i++) {
+                if (signal.co_arr[i] == '.') {
                     invPwm.setPwm(500);
                     Thread.sleep(60);
-                } else if (signal.c_arr[i] == '-') {
+                } else if (signal.co_arr[i] == '-') {
                     invPwm.setPwm(500);
                     Thread.sleep(180);
+                } else if (signal.co_arr[i] == '_') { //pause between letters
+                    invPwm.setPwm(0);
+                    Thread.sleep(180);
+                }else if (signal.co_arr[i] == '|') { //pause between words
+                    invPwm.setPwm(0);
+                    Thread.sleep(420);
                 }
+
                 invPwm.setPwm(0);
                 Thread.sleep(60);
             }
