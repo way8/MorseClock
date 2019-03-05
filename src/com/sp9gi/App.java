@@ -33,6 +33,7 @@ public class App {
      */
     public App() {
         MorseCode signal = new MorseCode();
+        Pwm pwm = new Pwm();
         alarmSetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -46,7 +47,8 @@ public class App {
             @Override
             public void actionPerformed(ActionEvent e) {
                 signal.input = codeField.getText();
-                Pwm pwm = new Pwm();
+                signal.executeCode();
+
                 try {
                     pwm.buzz();
                 } catch (InterruptedException ex) {
@@ -54,12 +56,7 @@ public class App {
                 }
             }
         });
-
-
-
         clock();
-
-
     }
 
     /**

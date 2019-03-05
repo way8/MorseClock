@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class MorseCode {
 
     public MorseCode() {
-        executeCode();
+        //        executeCode();
     } //constructor
 
     String letter;
@@ -68,9 +68,6 @@ public class MorseCode {
     }
 
     public void executeCode() {
-//        Scanner scan = new Scanner(System.in);
-//        System.out.println("wprowadź ciąg znaków");
-//        String input = scan.nextLine();
 
         in_arr = input.toCharArray();
 
@@ -83,7 +80,6 @@ public class MorseCode {
             String j = Character.toString(i);
             code = code + codes.get(j) + a;
         }
-
         co_arr = code.toCharArray();
 
         System.out.println("Po morsowskiemu to " + code);
