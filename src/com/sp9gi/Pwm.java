@@ -24,16 +24,17 @@ public class Pwm {
 
     /**
      * Method where we can set frequency of PWM and this method itself "play"  morse code - uses new thread
+     *
      * @throws InterruptedException
      */
     public void buzz() throws InterruptedException {
 
-                // you can optionally use these wiringPi methods to further customize the PWM generator
-                // see: http://wiringpi.com/reference/raspberry-pi-specifics/
-                // pwmFrequency in Hz = 19.2e6 Hz / pwmClock / pwmRange
-                com.pi4j.wiringpi.Gpio.pwmSetMode(Gpio.PWM_MODE_MS);
-                com.pi4j.wiringpi.Gpio.pwmSetRange(1024); //This sets the resolution, the number of steps between 0 and 100% duty cycle. The default value is 1024.
-                com.pi4j.wiringpi.Gpio.pwmSetClock(32);  //divisor
+        // you can optionally use these wiringPi methods to further customize the PWM generator
+        // see: http://wiringpi.com/reference/raspberry-pi-specifics/
+        // pwmFrequency in Hz = 19.2e6 Hz / pwmClock / pwmRange
+        com.pi4j.wiringpi.Gpio.pwmSetMode(Gpio.PWM_MODE_MS);
+        com.pi4j.wiringpi.Gpio.pwmSetRange(1024); //This sets the resolution, the number of steps between 0 and 100% duty cycle. The default value is 1024.
+        com.pi4j.wiringpi.Gpio.pwmSetClock(32);  //divisor
 
         //another threat for "play" the morse code
         Thread th3 = new Thread() {
@@ -48,74 +49,46 @@ public class Pwm {
                                     Thread.sleep(60);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
-                                }break;
+                                }
+                                invPwm.setPwm(0);
+                                break;
                             case '-':
                                 invPwm.setPwm(500);
                                 try {
                                     Thread.sleep(180);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
-                                }break;
-                            case '_':   //pause between letters
+                                }
+                                invPwm.setPwm(0);
+                                break;
+
+                            case '_':
+                                //pause between letters
                                 invPwm.setPwm(0);
                                 try {
                                     Thread.sleep(180);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
-                                }break;
-                            case '|':  //pause between words
+                                }
+                                break;
+                            case '|':
+                                //pause between words
                                 invPwm.setPwm(0);
                                 try {
                                     Thread.sleep(420);
                                 } catch (InterruptedException e) {
                                     e.printStackTrace();
-                                }break;
+                                }
+                                break;
                         }
-
-/*                        if (signal.co_arr[i] == '.') {
-                            invPwm.setPwm(500);
-                            try {
-                                Thread.sleep(60);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        } else if (signal.co_arr[i] == '-') {
-                            invPwm.setPwm(500);
-                            try {
-                                Thread.sleep(180);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        } else if (signal.co_arr[i] == '_') { //pause between letters
-                            invPwm.setPwm(0);
-                            try {
-                                Thread.sleep(180);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        } else if (signal.co_arr[i] == '|') { //pause between words
-                            invPwm.setPwm(0);
-                            try {
-                                Thread.sleep(420);
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }
-                        }
-
+                        // Pause between signs
                         invPwm.setPwm(0);
                         try {
                             Thread.sleep(60);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
 
-                        }*/
-                    }
-                    invPwm.setPwm(0);
-                    try {
-                        Thread.sleep(3000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-
+                        }
                     }
                 }
                 // stop all GPIO activity/threads by shutting down the GPIO controller
