@@ -14,7 +14,7 @@ import java.util.Calendar;
  * @author Sylwester
  */
 public class App {
-    String alarmHour = "0"; // set those variables to 0 because of problem with parsing - to RESOLVE!
+    String alarmHour = "0"; // todo set those variables to 0 because of problem with parsing - to RESOLVE!
     String alarmMin= "0";   // because now teh alarm will be always set to 00:00
     private JButton alarmSetButton;
     private JPanel panelMain;
@@ -64,7 +64,7 @@ public class App {
      */
     public void clock() {
 
-        Alarm diode = new Alarm();
+      //  Alarm diode = new Alarm();
 
         Thread th = new Thread() {
             public void run() {
@@ -89,12 +89,12 @@ public class App {
 
                         if (hour == alarmHourInt && min == alarmMinInt && second == 0) {  //Alarm set to...
 
-                            try {
+                       /*     try {
                                 diode.buzzer();
 
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
-                            }
+                            }*/
 
                         }
 
