@@ -1,7 +1,5 @@
 package com.sp9gi;
 
-import com.pi4j.io.gpio.Pin;
-
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,7 +31,7 @@ public class App {
      */
     public App() {
         MorseCode signal = new MorseCode();
-        Pwm pwm = new Pwm();
+     //   Alarm pwm = new Alarm();
         alarmSetButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -49,11 +47,11 @@ public class App {
                 signal.input = codeField.getText();
                 signal.executeCode();
 
-                try {
-                    pwm.buzz();
-                } catch (InterruptedException ex) {
-                    ex.printStackTrace();
-                }
+//                try {
+//                    pwm.buzz();
+//                } catch (InterruptedException ex) {
+//                    ex.printStackTrace();
+//                }
             }
         });
         clock();
@@ -64,7 +62,7 @@ public class App {
      */
     public void clock() {
 
-      //  Alarm diode = new Alarm();
+        Alarm alarm = new Alarm();
 
         Thread th = new Thread() {
             public void run() {
@@ -81,7 +79,7 @@ public class App {
 
                         clock.setText("" + hour + ":" + min + ":" + second); // Display clock in app
                         date.setText(day + "/" + month + "/" + year);
-                        sleep(1000);
+                        sleep(500);
 
 
                         int alarmHourInt = Integer.valueOf(alarmHour); //Taking the time from form
@@ -89,12 +87,11 @@ public class App {
 
                         if (hour == alarmHourInt && min == alarmMinInt && second == 0) {  //Alarm set to...
 
-                       /*     try {
-                                diode.buzzer();
-
-                            } catch (InterruptedException e) {
-                                e.printStackTrace();
-                            }*/
+                            try {
+                                alarm.buzz();
+                            } catch (InterruptedException ex) {
+                                ex.printStackTrace();
+                            }
 
                         }
 

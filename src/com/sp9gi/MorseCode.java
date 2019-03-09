@@ -1,27 +1,19 @@
 package com.sp9gi;
 
 import java.util.HashMap;
-import java.util.Scanner;
 
 /**
- * Class for storage Morse Code
+ * Class for storage and generate Morse Code
  */
 public class MorseCode {
 
-    public MorseCode() {
-        //        executeCode();
-    } //constructor
-
-    String letter;
     char[] in_arr;
-    static char[] co_arr; //at least two object will have access to this variable
+    static char[] co_arr; //at least two object will have access to this variable, so it's static
     String code = "";
     String a = "";
     String input = "";
 
-    // public static void morseData () {
     private static HashMap<String, String> codes = new HashMap<String, String>();
-
     // create a static block
     static {
         codes.put("a", ".-");
@@ -67,8 +59,11 @@ public class MorseCode {
 
     }
 
+    /**
+     * Method for generate array of morse code
+     */
     public void executeCode() {
-
+        code = "";//clear value of of the variable
         in_arr = input.toCharArray();
 
         // Loop for generate morse code with suitable pauses
@@ -80,7 +75,7 @@ public class MorseCode {
             String j = Character.toString(i);
             code = code + codes.get(j) + a;
         }
-        co_arr = code.toCharArray();
+        co_arr = code.toCharArray(); //array of morse code
 
         System.out.println("Po morsowskiemu to " + code);
     }

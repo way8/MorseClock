@@ -9,7 +9,7 @@ import com.pi4j.io.gpio.event.GpioPinListenerDigital;
 /**
  * Generate PWM signal for speaker
  */
-public class Pwm {
+public class Alarm {
     int off = 0;
 
     //create object for take from them morse code
@@ -33,7 +33,7 @@ public class Pwm {
     GpioPinPwmOutput invPwm = gpio.provisionPwmOutputPin(invPin);
 
     /**
-     * Method where we can set frequency of PWM and this method itself "play"  morse code - uses new thread
+     * Method where we can set frequency of PWM, and this method itself "play"  morse code - uses new thread
      *
      * @throws InterruptedException
      */
@@ -58,7 +58,7 @@ public class Pwm {
                 myButton.addListener(new GpioPinListenerDigital() {
                     @Override
                     public void handleGpioPinDigitalStateChangeEvent(GpioPinDigitalStateChangeEvent event) {
-                        pin.low(); //chanage the state of pin, in this case turn off the buzzer
+                        pin.low(); //change the state of pin, in this case turn off the buzzer
                         off = 1;
                         invPwm.setPwm(0);
                     }
