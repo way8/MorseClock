@@ -18,28 +18,19 @@ public class App {
     private JPanel panelMain;
     public JLabel clock;
     private JLabel date;
-    private JTextField minField;
-    private JTextField hourField;
-    private JLabel setLabel;
     private JLabel labAlarm;
     private JTextField codeField;
     private JLabel codeLabel;
     private JButton codeSetButton;
+    private JButton menuButton;
+    private JButton codeButton;
 
     /**
      * Method to operate App.form
      */
     public App() {
         MorseCode signal = new MorseCode();
-     //   Alarm pwm = new Alarm();
-        alarmSetButton.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                alarmMin = minField.getText();
-                alarmHour = hourField.getText();
-                labAlarm.setText(alarmHour + " : " + alarmMin);
-            }
-        });
+       // Alarm pwm = new Alarm();
 
         codeSetButton.addActionListener(new ActionListener() {
             @Override
@@ -55,6 +46,38 @@ public class App {
             }
         });
         clock();
+        //popup window for set the clock alarm
+        menuButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JPanel panel = new JPanel();
+                JTextField hourField = new JTextField(2);
+                JTextField minField = new JTextField(2);
+
+                panel.add(new JLabel("Set alarm time:"));
+                panel.add(hourField);
+                panel.add(minField);
+                JOptionPane.showConfirmDialog(null, panel, "Settings", JOptionPane.OK_CANCEL_OPTION);
+                alarmMin = minField.getText();
+                alarmHour = hourField.getText();
+                labAlarm.setText(alarmHour + " : " + alarmMin);
+            }
+        });
+
+        //popup window for set the morse code for alarm
+        codeButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JPanel panel = new JPanel();
+                JTextField codeField2 = new JTextField(5);
+
+                panel.add(new JLabel("Set alarm theme:"));
+                panel.add(codeField2);
+                JOptionPane.showConfirmDialog(null, panel, "Settings", JOptionPane.OK_CANCEL_OPTION);
+                signal.input = codeField2.getText();
+                signal.executeCode();
+            }
+        });
     }
 
     /**
@@ -110,19 +133,6 @@ public class App {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.pack();
         frame.setVisible(true);
-
-
-
-
-
-//        Alarm diode = new Alarm();
-//        try {
-//            diode.buzzerOn();
-//
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
-
 
 
     }

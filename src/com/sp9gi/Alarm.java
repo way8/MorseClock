@@ -24,8 +24,7 @@ public class Alarm {
     final GpioPinDigitalOutput pin = gpio.provisionDigitalOutputPin(RaspiPin.GPIO_29, "MyLED", PinState.HIGH);
     // set shutdown state for this input pin
 
-
-    // All Raspberry Pi models support a hardware PWM invPin on GPIO_01.
+// All Raspberry Pi models support a hardware PWM invPin on GPIO_01.
     Pin invPin = CommandArgumentParser.getPin(
             RaspiPin.class,    // invPin provider class to obtain invPin instance from
             RaspiPin.GPIO_01);  // default invPin if no invPin argument found
