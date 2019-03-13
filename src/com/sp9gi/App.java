@@ -20,10 +20,10 @@ public class App {
     private JLabel date;
     private JLabel labAlarm;
     private JTextField codeField;
-    private JLabel codeLabel;
     private JButton codeSetButton;
     private JButton menuButton;
     private JButton codeButton;
+    private JLabel info;
 
     /**
      * Method to operate App.form

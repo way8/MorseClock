@@ -1,89 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="com.sp9gi.App">
-  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="7" column-count="5" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
-    <margin top="0" left="0" bottom="0" right="0"/>
+  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="6" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+    <margin top="10" left="10" bottom="10" right="10"/>
     <constraints>
-      <xy x="20" y="20" width="450" height="270"/>
+      <xy x="20" y="20" width="480" height="390"/>
     </constraints>
     <properties>
-      <minimumSize width="450" height="270"/>
+      <font name="Roboto"/>
+      <minimumSize width="480" height="320"/>
+      <preferredSize width="480" height="320"/>
+      <requestFocusEnabled value="false"/>
     </properties>
-    <border type="none"/>
+    <border type="none">
+      <font/>
+    </border>
     <children>
-      <component id="3962c" class="javax.swing.JLabel" binding="date">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font name="Source Code Pro" size="22"/>
-          <text value="Label"/>
-        </properties>
-      </component>
-      <component id="e121e" class="javax.swing.JLabel" binding="clock">
-        <constraints>
-          <grid row="0" column="0" row-span="2" col-span="5" vsize-policy="0" hsize-policy="0" anchor="0" fill="0" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <font name="Source Code Pro" size="28"/>
-          <text value="Label"/>
-        </properties>
-      </component>
-      <component id="9afce" class="javax.swing.JTextField" binding="codeField">
-        <constraints>
-          <grid row="5" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="164" height="39"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value=""/>
-        </properties>
-      </component>
-      <component id="dfe6a" class="javax.swing.JLabel" binding="codeLabel">
-        <constraints>
-          <grid row="5" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="94" height="39"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Enter text"/>
-        </properties>
-      </component>
-      <component id="efad6" class="javax.swing.JButton" binding="codeSetButton">
-        <constraints>
-          <grid row="5" column="4" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false">
-            <preferred-size width="79" height="39"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Set code"/>
-        </properties>
-      </component>
-      <component id="3acf0" class="javax.swing.JLabel" binding="labAlarm">
-        <constraints>
-          <grid row="3" column="4" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
-            <preferred-size width="28" height="57"/>
-          </grid>
-        </constraints>
-        <properties>
-          <text value="Label"/>
-        </properties>
-      </component>
-      <component id="b0ce7" class="javax.swing.JButton" binding="menuButton">
-        <constraints>
-          <grid row="6" column="2" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-        <properties>
-          <text value="Alarm time"/>
-        </properties>
-      </component>
       <component id="c5734" class="javax.swing.JButton" binding="codeButton" default-binding="true">
         <constraints>
-          <grid row="6" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="5" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="60" height="35"/>
+          </grid>
         </constraints>
         <properties>
           <text value="Code"/>
         </properties>
       </component>
+      <component id="3acf0" class="javax.swing.JLabel" binding="labAlarm">
+        <constraints>
+          <grid row="4" column="3" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="28" height="26"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Roboto" size="14"/>
+          <text value="Label"/>
+        </properties>
+      </component>
+      <component id="b0ce7" class="javax.swing.JButton" binding="menuButton">
+        <constraints>
+          <grid row="5" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="4" fill="0" indent="0" use-parent-layout="false">
+            <minimum-size width="60" height="35"/>
+          </grid>
+        </constraints>
+        <properties>
+          <actionCommand value="Alarm"/>
+          <label value="Alarm"/>
+          <text value="Alarm"/>
+        </properties>
+      </component>
+      <component id="784c7" class="javax.swing.JLabel" binding="info">
+        <constraints>
+          <grid row="4" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="1" anchor="4" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="67" height="26"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Roboto" size="14"/>
+          <horizontalAlignment value="0"/>
+          <inheritsPopupMenu value="false"/>
+          <text value="Alarm set to:"/>
+        </properties>
+      </component>
+      <component id="3962c" class="javax.swing.JLabel" binding="date">
+        <constraints>
+          <grid row="1" column="0" row-span="1" col-span="4" vsize-policy="0" hsize-policy="0" anchor="2" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="65" height="23"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Roboto" size="28"/>
+          <text value="Label"/>
+        </properties>
+      </component>
+      <vspacer id="f62f2">
+        <constraints>
+          <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="2" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false">
+            <minimum-size width="-1" height="20"/>
+          </grid>
+        </constraints>
+      </vspacer>
+      <component id="e121e" class="javax.swing.JLabel" binding="clock">
+        <constraints>
+          <grid row="2" column="0" row-span="1" col-span="4" vsize-policy="2" hsize-policy="2" anchor="0" fill="0" indent="0" use-parent-layout="false">
+            <preferred-size width="300" height="130"/>
+          </grid>
+        </constraints>
+        <properties>
+          <font name="Roboto" size="84"/>
+          <text value="21:5:12"/>
+          <verifyInputWhenFocusTarget value="true"/>
+        </properties>
+      </component>
+      <vspacer id="83d97">
+        <constraints>
+          <grid row="3" column="1" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
+        </constraints>
+      </vspacer>
     </children>
   </grid>
 </form>
